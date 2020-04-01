@@ -1,0 +1,76 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+
+suppressPackageStartupMessages({
+  library(flagon)
+  library(magick)
+})
+```
+
+
+# flagon
+
+<!-- badges: start -->
+![](http://img.shields.io/badge/cool-useless-green.svg)
+<!-- badges: end -->
+
+`flagon` provides PNG and SVG images of the flags of the world, indexed by 
+their [2-letter ISO-3166 country codes](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes).
+
+The flags are sourced from [https://github.com/hjnilsson/country-flags](https://github.com/hjnilsson/country-flags), and are the public domain flag images from wikipedia.
+
+
+
+## Installation
+
+You can install from [GitHub](https://github.com/coolbutuseless/flagon) with:
+
+``` r
+# install.packages("remotes")
+remotes::install_github("coolbutuseless/flagon")
+```
+
+
+## Usage: Retrieving filenames
+
+```{r}
+library(flagon)
+
+country_codes <- c('au', 'dk') # Australia and Germany
+
+flagon::flags(country_codes)
+flagon::flags(country_codes, 'svg')
+```
+
+
+## Using with `magick`
+
+```{r}
+magick::image_read(flagon::flags('no'))
+```
+
+
+## That's it
+
+That's all it does.
+
+There's also a table of country codes (`flagon::country_codes`), 
+the first rows of which are shown below:
+
+```{r echo = FALSE}
+flagon::country_codes %>%
+  head %>%
+  knitr::kable()
+```
+
