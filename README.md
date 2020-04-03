@@ -48,14 +48,14 @@ flagon::flags(ccodes, 'svg')
 magick::image_read(flagon::flags('no'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="50%" />
+<img src="man/figures/README-flag_example-1.png" width="50%" />
 
 ## That’s it
 
-That’s all it does.
+That’s all this package does.
 
-There’s also a table of country codes (`flagon::country_codes`), the
-first rows of which are shown below:
+There’s also a table of country codes (`flagon::country_codes`) along
+with some image information. The first rows are shown below:
 
 | ccode | country              | png\_width | png\_height | png\_filesize | aspect\_ratio | svg\_filesize |
 | :---- | :------------------- | ---------: | ----------: | ------------: | ------------: | ------------: |
@@ -65,3 +65,21 @@ first rows of which are shown below:
 | ag    | Antigua and Barbuda  |       1000 |         667 |          9752 |      1.499250 |           555 |
 | ai    | Anguilla             |       1000 |         500 |          9003 |      2.000000 |          3468 |
 | al    | Albania              |       1000 |         714 |         16585 |      1.400560 |          4905 |
+
+The aspect ratios for flags varies widely.
+
+<img src="man/figures/README-aspect_ratio-1.png" width="50%" />
+
+The two outliers are Nepal (aspect ratio = 0.82) and Qatar (aspect ratio
+= 4.17)
+
+``` r
+flagon::country_codes %>% 
+  filter(aspect_ratio %in% range(aspect_ratio)) %>% 
+  pull(ccode) %>%
+  flagon::flags() %>% 
+  magick::image_read() %>% 
+  magick::image_montage()
+```
+
+<img src="man/figures/README-outliers-1.png" width="100%" />
