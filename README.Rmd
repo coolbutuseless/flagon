@@ -16,6 +16,8 @@ suppressPackageStartupMessages({
   library(flagon)
   library(magick)
 })
+
+
 ```
 
 
@@ -30,7 +32,7 @@ their [2-letter ISO-3166 country codes](https://en.wikipedia.org/wiki/List_of_IS
 
 The flags are sourced from [https://github.com/hjnilsson/country-flags](https://github.com/hjnilsson/country-flags), and are the public domain flag images from wikipedia.
 
-
+All PNG flags are 1000px in width.
 
 ## Installation
 
@@ -47,16 +49,15 @@ remotes::install_github("coolbutuseless/flagon")
 ```{r}
 library(flagon)
 
-country_codes <- c('au', 'dk') # Australia and Germany
+ccodes <- c('au', 'dk') # Australia and Germany
 
-flagon::flags(country_codes)
-flagon::flags(country_codes, 'svg')
+flagon::flags(ccodes)
+flagon::flags(ccodes, 'svg')
 ```
-
 
 ## Using with `magick`
 
-```{r}
+```{r out.width="50%"}
 magick::image_read(flagon::flags('no'))
 ```
 
@@ -73,4 +74,13 @@ flagon::country_codes %>%
   head %>%
   knitr::kable()
 ```
+
+
+
+
+
+
+
+
+
 

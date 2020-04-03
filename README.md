@@ -15,6 +15,8 @@ codes](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes).
 The flags are sourced from <https://github.com/hjnilsson/country-flags>,
 and are the public domain flag images from wikipedia.
 
+All PNG flags are 1000px in width.
+
 ## Installation
 
 You can install from [GitHub](https://github.com/coolbutuseless/flagon)
@@ -30,12 +32,12 @@ remotes::install_github("coolbutuseless/flagon")
 ``` r
 library(flagon)
 
-country_codes <- c('au', 'dk') # Australia and Germany
+ccodes <- c('au', 'dk') # Australia and Germany
 
-flagon::flags(country_codes)
+flagon::flags(ccodes)
 #> [1] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/flagon/png/au.png"
 #> [2] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/flagon/png/dk.png"
-flagon::flags(country_codes, 'svg')
+flagon::flags(ccodes, 'svg')
 #> [1] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/flagon/svg/au.svg"
 #> [2] "/Library/Frameworks/R.framework/Versions/3.6/Resources/library/flagon/svg/dk.svg"
 ```
@@ -46,7 +48,7 @@ flagon::flags(country_codes, 'svg')
 magick::image_read(flagon::flags('no'))
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="50%" />
 
 ## That’s it
 
@@ -55,11 +57,11 @@ That’s all it does.
 There’s also a table of country codes (`flagon::country_codes`), the
 first rows of which are shown below:
 
-| ccode | country              |
-| :---- | :------------------- |
-| ad    | Andorra              |
-| ae    | United Arab Emirates |
-| af    | Afghanistan          |
-| ag    | Antigua and Barbuda  |
-| ai    | Anguilla             |
-| al    | Albania              |
+| ccode | country              | png\_width | png\_height | png\_filesize | aspect\_ratio | svg\_filesize |
+| :---- | :------------------- | ---------: | ----------: | ------------: | ------------: | ------------: |
+| ad    | Andorra              |       1000 |         700 |         24342 |      1.428571 |         47406 |
+| ae    | United Arab Emirates |       1000 |         500 |           888 |      2.000000 |           198 |
+| af    | Afghanistan          |       1000 |         667 |         32653 |      1.499250 |         33346 |
+| ag    | Antigua and Barbuda  |       1000 |         667 |          9752 |      1.499250 |           555 |
+| ai    | Anguilla             |       1000 |         500 |          9003 |      2.000000 |          3468 |
+| al    | Albania              |       1000 |         714 |         16585 |      1.400560 |          4905 |
